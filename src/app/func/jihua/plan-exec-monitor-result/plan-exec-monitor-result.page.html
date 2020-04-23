@@ -1,0 +1,57 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_planExecMonitor_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of resultList">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/monitor-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_noun_equip' | translate }}</ion-label>
+          <ion-label>{{item.equipName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/classgroup-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_noun_shift' | translate }}</ion-label>
+          <ion-label>{{item.shiftName}}-{{item.shiftClassName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="gift" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'planExecMonitorResult_contrast' | translate}}</ion-label>
+          <ion-label>{{item.totalRealNum}}/{{item.totalPlanNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <table width="100%">
+            <tr>
+              <!-- <td style="background-color: grey;">
+                <div style="background-color: hotpink;" [ngStyle]="{'width': (item.totalRealNum * 100/item.totalPlanNum) + '%'}">{{item.totalRealNum}}/{{item.totalPlanNum}}</div>
+              </td> -->
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text-bar">
+                    <div class="loaded-text">
+                      {{item.completeRate}}%
+                    </div>
+                    <div class="amount progress_color" [ngStyle]="{'width': (item.completeRate > 100 ? 100 : item.completeRate) + '%'}">
+                      <div class="loaded">
+                      </div>
+                      <div class="progress-lines"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="text-align:center;line-height:24px;"><ion-label>{{ 'planExecMonitorResult_remark' | translate }}</ion-label></div>
+</ion-content>

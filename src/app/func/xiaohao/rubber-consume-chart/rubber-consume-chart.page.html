@@ -1,0 +1,44 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_consume_title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_startTime' | translate }}{{input.startDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_endTime' | translate }}{{input.endDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/classgroup-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_shift' | translate }}{{input.shiftName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/material-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_materName' | translate }}{{input.materName}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubberConsumeChart_title_chart' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="options" class="echarts" style="height:320px;"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

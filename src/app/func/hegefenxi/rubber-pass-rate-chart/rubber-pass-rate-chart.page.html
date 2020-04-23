@@ -1,0 +1,74 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_totalQuaRate_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ 'rubberPassRateChart_title_chart' | translate }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="options" class="echarts" style="height:320px;"></div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>DATE:<br>{{ 'rubberPassRateChart_checkDate' | translate }}</ion-label>
+          <ion-label>DO:<br>{{ 'rubberPassRateChart_dayOutput' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>DQN:<br>{{ 'rubberPassRateChart_dayQuaNum' | translate }}</ion-label>
+          <ion-label>DQR:<br>{{ 'rubberPassRateChart_dayQuaRate' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>CO:<br>{{ 'rubberPassRateChart_cumulatedOutput' | translate }}</ion-label>
+          <ion-label>CQN:<br>{{ 'rubberPassRateChart_cumulatedQuaNum' | translate }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>CQR:<br>{{ 'rubberPassRateChart_cumulatedQuaRate' | translate }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let item of resultList">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>DATE</ion-label>
+          <ion-label>{{item.checkDateSimple}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>DO</ion-label>
+          <ion-label>{{item.dayTotal}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>DQN</ion-label>
+          <ion-label>{{item.dayQuaNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>DQR</ion-label>
+          <ion-label>{{item.dayPassRate}}%</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>CO</ion-label>
+          <ion-label>{{item.cumProd}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>CQN</ion-label>
+          <ion-label>{{item.cumQuaNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>CQR</ion-label>
+          <ion-label>{{item.cumPassRate}}%</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

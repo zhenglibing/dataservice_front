@@ -1,0 +1,40 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meMain_About' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <div class="about-us-header">
+          <img src="/assets/img/meImg/aboutUsIco.svg" />
+      </div>
+    </ion-list-header>
+    <ion-item>
+      <ion-note slot="start">{{ 'meAbout_tel' | translate }}</ion-note>
+      <ion-label>18678951679</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">{{ 'meAbout_addtress' | translate }}</ion-note>
+      <ion-label>{{ 'meAbout_value_addtress' | translate }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-list lines="none">
+    <ion-item class="about-us-app-version">
+      <ion-label>{{ 'meAbout_license' | translate }}</ion-label>
+    </ion-item>
+    <ion-item class="about-us-app-version">
+      <ion-label>{{ 'meAbout_copyright' | translate }}</ion-label>
+    </ion-item>
+    <ion-item class="about-us-app-version">
+      <ion-label>Copyright © 2020 Wongoing.All Rights Reserved.</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-footer>

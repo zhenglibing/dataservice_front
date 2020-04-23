@@ -1,0 +1,83 @@
+<ion-header *ngIf="isShowHeader">
+    <ion-toolbar>
+        <ion-title>{{ 'funcMain_title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content forceOverscroll="false">
+    <div *ngIf="isGetDataSuccess">
+        <ion-list lines="none" *ngFor="let module of modules">
+            <ion-list-header>
+                <ion-label class="tt">{{module.moduleName}}</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let func of module.data" [routerLink]="[func.type]" detail>
+                <ion-icon slot="start" src="/assets/svg/{{func.type}}-primary.svg"></ion-icon>
+                <ion-label>{{func.functionName}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div *ngIf="! isGetDataSuccess">
+        <ion-list lines="none">
+            <ion-list-header>
+                <ion-label class="tt">生产功能</ion-label>
+            </ion-list-header>
+            <ion-item [routerLink]="['/tabs/func/chanliang']" detail>
+                <ion-icon slot="start" src="/assets/svg/chanliang-primary.svg"></ion-icon>
+                <ion-label>胶料产量分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/xiaohao']" detail>
+                <ion-icon slot="start" src="/assets/svg/xiaohao-primary.svg"></ion-icon>
+                <ion-label>原料消耗分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/touruchanchu']" detail>
+                <ion-icon slot="start" src="/assets/svg/touruchanchu-primary.svg"></ion-icon>
+                <ion-label>投入产出分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/jihua']" detail>
+                <ion-icon slot="start" src="/assets/svg/jihua-primary.svg"></ion-icon>
+                <ion-label>计划执行监控</ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-list lines="none">
+            <ion-list-header>
+                <ion-label class="tt">库存功能</ion-label>
+            </ion-list-header>
+            <ion-item [routerLink]="['/tabs/func/balanceSummary']" detail>
+                <ion-icon slot="start" src="/assets/svg/balanceSummary-primary.svg"></ion-icon>
+                <ion-label>胶料结存分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/chuku']" detail>
+                <ion-icon slot="start" src="/assets/svg/chuku-primary.svg"></ion-icon>
+                <ion-label>出库汇总分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/ruku']" detail>
+                <ion-icon slot="start" src="/assets/svg/ruku-primary.svg"></ion-icon>
+                <ion-label>入库汇总分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/chaoqi']" detail>
+                <ion-icon slot="start" src="/assets/svg/chaoqi-primary.svg"></ion-icon>
+                <ion-label>超期胶料分析</ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-list lines="none">
+            <ion-list-header>
+                <ion-label class="tt">质量功能</ion-label>
+            </ion-list-header>
+            <ion-item [routerLink]="['/tabs/func/jiance']" detail>
+                <ion-icon slot="start" src="/assets/svg/jiance-primary.svg"></ion-icon>
+                <ion-label>胶料快检趋势分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/hegefenxi']" detail>
+                <ion-icon slot="start" src="/assets/svg/hegefenxi-primary.svg"></ion-icon>
+                <ion-label>胶料总体合格率分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/spc']" detail>
+                <ion-icon slot="start" src="/assets/svg/spc-primary.svg"></ion-icon>
+                <ion-label>胶料质量SPC分析</ion-label>
+            </ion-item>
+            <ion-item [routerLink]="['/tabs/func/kuhegefenxi']" detail>
+                <ion-icon slot="start" src="/assets/svg/kuhegefenxi-primary.svg"></ion-icon>
+                <ion-label>胶料分类合格率分析</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

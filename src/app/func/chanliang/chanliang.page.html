@@ -1,0 +1,65 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'generic_production_title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- 开始时间 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+      <ion-label>{{'generic_startTime' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="input.startDate" display-format="YYYY/MM/DD" picker-format="YYYY/MM/DD" doneText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}"></ion-datetime>
+    </ion-item>
+    <!-- 结束时间 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+      <ion-label>{{'generic_endTime' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="input.endDate" display-format="YYYY/MM/DD" picker-format="YYYY/MM/DD" doneText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}"></ion-datetime>
+    </ion-item>
+    <!-- 生产机台 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/monitor-primary.svg"></ion-icon>
+      <ion-label>{{'generic_equip' | translate}}</ion-label>
+      <ion-select [(ngModel)]="input.equipMultiple" multiple="true" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}" placeholder="{{'generic_placeholder_equip' | translate}}">
+        <ion-select-option *ngFor="let equip of equipList" value="{{equip.equipCode}}">{{equip.equipName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- 生产班组 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/classgroup-primary.svg"></ion-icon>
+      <ion-label>{{'generic_shiftClass' | translate}}</ion-label>
+      <ion-select [(ngModel)]="input.shiftClassId" [value]="1" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}">
+        <ion-select-option *ngFor="let shiftClass of shiftClassList" value="{{shiftClass.shiftClassId}}">{{shiftClass.shiftClassName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- 胶料类型 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/rubtype-primary.svg"></ion-icon>
+      <ion-label>{{'generic_RubberType' | translate}}</ion-label>
+      <ion-select [(ngModel)]="input.rubTypeCode" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}">
+        <ion-select-option *ngFor="let rubType of rubTypeList" value="{{rubType.rubTypeCode}}">{{rubType.rubTypeName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- 胶料大类 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/rubmkind-primary.svg"></ion-icon>
+      <ion-label>{{'rubberProductSearch_rubberBigType' | translate}}</ion-label>
+      <ion-select [(ngModel)]="input.mKindCode" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}">
+        <ion-select-option *ngFor="let mkind of mkindList" value="{{mkind.mkindCode}}">{{mkind.mkindName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- 物料名称 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/material-primary.svg"></ion-icon>
+      <ion-label>{{'generic_materName' | translate}}</ion-label>
+      <ion-input [(ngModel)]="input.materName" placeholder="{{'generic_placeholder_materName' | translate}}"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)='doSearch()'>{{ 'generic_query' | translate }}</ion-button>
+</ion-content>

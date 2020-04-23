@@ -1,0 +1,90 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_outValid_title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon name="barbell" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_barcode' | translate }} :{{barcode}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_outValidDate' | translate }} :{{outValidDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_outValid_storehouse' | translate }}{{storehouse}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="book" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_materName' | translate }}{{materName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="keypad" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_RubberType' | translate }}{{rubberType}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="barcode" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_stockWeight' | translate }} :{{stockWeight}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="cube" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_convertStdNum' | translate }} :{{convertStdNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="flag" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_equip' | translate }}{{equip}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="hammer" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_shift' | translate }}{{shift}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="people" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_shiftClass' | translate }}{{shiftClass}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="toggle" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_usedState' | translate }} :{{usedState}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="link" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_dealMeasure' | translate }} :{{dealMeasure}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="toggle" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_quaState' | translate }} :{{quaState}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="flag" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_quaFlag' | translate }} :{{quaFlag}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="toggle" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_quaFinish' | translate }} :{{quaFinish}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_validDate' | translate }} :{{validDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="reader" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'outValidChart_unQuaReason' | translate }} :{{unQuaReason}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div echarts [options]="options" class="echarts" style="height:320px;"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

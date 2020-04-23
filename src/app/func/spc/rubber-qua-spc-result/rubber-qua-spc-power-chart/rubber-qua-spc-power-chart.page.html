@@ -1,0 +1,171 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'rubQuaSPCPowerChart_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>{{titleDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{titleDetail}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCPowerChart_title_chart' | translate }} ca={{initEntity.ca}}</ion-label>
+        <ion-label>(D:{{ 'rubQuaSPCPowerChart_density_y_chart' | translate}},DD:{{ 'rubQuaSPCPowerChart_distributionDensity_y_chart' | translate }})</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="options" class="echarts" style="height:320px;"></div>
+    </ion-card-content>
+  </ion-card>
+  <!-- 工序能力判定 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCPowerChart_processCapability' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>{{ 'rubQuaSPCPowerChart_judge_processCapabil' | translate}}：{{initEntity.judge.judge}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ 'rubQuaSPCPowerChart_description_processCapability' | translate }}：{{initEntity.judge.description}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 统计值 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'generic_spc_statistics' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_sampleNum_statistics' | translate }}：{{initEntity.sampleNum}}</ion-col>
+          <ion-col>{{ 'generic_spc_max_statistics' | translate }}：{{initEntity.max}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_min_statistics' | translate }}：{{initEntity.min}}</ion-col>
+          <ion-col>{{ 'generic_spc_average_statistics' | translate }}：{{initEntity.average}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 常量值 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'generic_spc_constant' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_usl_contant' | translate}}：{{initEntity.usl}}</ion-col>
+          <ion-col>{{ 'generic_spc_lsl_contant' | translate }}：{{initEntity.lsl}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_target_contant' | translate }}：{{initEntity.target}}</ion-col>
+          <ion-col>{{ 'generic_spc_groupSize_contant' | translate }}：{{initEntity.groupSize}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 计算值 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'generic_spc_calculation' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_positive3Signa_calculation' | translate }}：{{initEntity.positive3Signa}}</ion-col>
+          <ion-col>{{ 'generic_spc_negative3Signa_calculation' | translate }}：{{initEntity.negative3Signa}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ 'generic_spc_stdDev_calculation' | translate }}：{{initEntity.stdDev}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 长期工序能力 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCPowerChart_longProcessCapability' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>PPK：{{initEntity.ppk}}</ion-col>
+          <ion-col>PP：{{initEntity.pp}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>PPL：{{initEntity.ppl}}</ion-col>
+          <ion-col>PPU：{{initEntity.ppu}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 短期工序能力 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCPowerChart_shortProcessCapability' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>CP：{{initEntity.cp}}</ion-col>
+          <ion-col>CPK：{{initEntity.cpk}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>CPL：{{initEntity.cpl}}</ion-col>
+          <ion-col>CPU：{{initEntity.cpu}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!-- 实际PPM值 -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCPowerChart_PPM' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>{{ 'rubQuaSPCPowerChart_less_PPM' | translate }}：{{initEntity.ppmLessLsl}}</ion-col>
+          <ion-col>{{ 'rubQuaSPCPowerChart_more_PPM' | translate }}：{{initEntity.ppmMoreUsl}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{ 'rubQuaSPCPowerChart_total_PPM' | translate }}：{{initEntity.ppmTotal}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

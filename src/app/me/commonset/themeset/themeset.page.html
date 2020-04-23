@@ -1,0 +1,20 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meComSet_theme' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="full-width">
+    <ion-button expand="full" (click) = 'changeTheme("primary-theme")'>{{ 'meThemeSet_default_theme' | translate }}</ion-button>
+  </section>
+  <section class="full-width">
+      <ion-button expand="full" (click) = 'changeTheme("tertiary-theme")'>{{ 'meThemeSet_tertiary_theme' | translate }}</ion-button>
+  </section>
+  <section class="full-width">
+    <ion-button expand="full" (click) = 'changeTheme("success-theme")'>{{ 'meThemeSet_success_theme' | translate }}</ion-button>
+</section>
+</ion-content>

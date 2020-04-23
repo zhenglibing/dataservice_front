@@ -1,0 +1,45 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'rubQuaSPCMeanStdDevChart_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>{{titleDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{titleDetail}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCMeanStdDevChart_title_xbarChart' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="optionsXbar" class="echarts" style="height:240px;"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-label>{{ 'rubQuaSPCMeanStdDevChart_title_stdDevChart' | translate }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="optionsStdDev" class="echarts" style="height:240px;"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

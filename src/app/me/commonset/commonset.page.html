@@ -1,0 +1,40 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meMain_common' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <!-- 主题设置 -->
+    <ion-item details [routerLink]="['/tabs/me/commonset/themeset']">
+      <ion-icon slot="start" src="/assets/svg/theme-primary.svg"></ion-icon>
+      <ion-label>{{ 'meComSet_theme' | translate }}</ion-label>
+    </ion-item>
+    <!-- 语言切换 -->
+    <ion-item details [routerLink]="['/tabs/me/commonset/langset']">
+      <ion-icon slot="start" src="/assets/svg/language-primary.svg"></ion-icon>
+      <ion-label>{{ 'meComSet_translate' | translate }}</ion-label>
+    </ion-item>
+    <!-- 接收新消息通知 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/new-message-primary.svg"></ion-icon>
+      <ion-label>{{ 'meComSet_receiveMsg' | translate }}</ion-label>
+      <ion-toggle [(ngModel)]="settings.pushState"></ion-toggle>
+    </ion-item>
+    <!-- 消息免打扰 -->
+    <ion-item details>
+      <ion-icon slot="start" src="/assets/svg/miandarao-primary.svg"></ion-icon>
+      <ion-label>{{ 'meComSet_silence' | translate }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <section class="full-width">
+    <ion-button expand="full">{{ 'meComSet_clearCache' | translate }}</ion-button>
+  </section>
+  <section class="full-width">
+      <ion-button expand="full">{{ 'meComSet_logout' | translate }}</ion-button>
+  </section>
+</ion-content>

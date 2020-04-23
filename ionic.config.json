@@ -1,0 +1,8 @@
+{
+  "name": "mes",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

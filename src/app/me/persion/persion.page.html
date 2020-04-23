@@ -1,0 +1,50 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'mePersonal_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <div class="about-us-header">
+          <img src="{{ isDingAvatar? dingUser.avatar : '/assets/img/meImg/aboutUsIco.svg'}}" width="186" height="186" />
+      </div>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>用户ID</ion-label>
+      <ion-label>{{dingUser.userid}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>姓名</ion-label>
+      <ion-label>{{dingUser.name}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>工号</ion-label>
+      <ion-label>{{dingUser.jobnumber}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>电话</ion-label>
+      <ion-label>{{dingUser.mobile}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>邮箱</ion-label>
+      <ion-label>{{dingUser.email}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>公司邮箱</ion-label>
+      <ion-label>{{dingUser.orgEmail}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>职位</ion-label>
+      <ion-label>{{dingUser.position}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>入职时间</ion-label>
+      <ion-label>{{dingUser.hiredDate}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meMain_feedback' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-textarea [(ngModel)]="content" rows="15" placeholder="{{ 'meFeedback_placeholdler_textarea' | translate}}"></ion-textarea>
+      <div style="margin-top:50px;">
+        <ion-button expand="full" (click)="feedbackCommit()">{{ 'generic_submit' | translate }}</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

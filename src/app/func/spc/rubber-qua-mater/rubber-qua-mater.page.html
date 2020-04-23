@@ -1,0 +1,41 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="isShowHeader">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>物料检索</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar showCanceelButton="focus" (ionChange)="handleChange()" [(ngModel)]="searchKey" cancelButtonText="{{ 'generic_cancel' | translate}}" placeholder="{{ 'generic_placeholder_materName' | translate}}"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doDownRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-toolbar *ngIf="isShowHistory">
+    <ion-label style="margin-left:15px;">搜索历史</ion-label>
+    <ion-icon slot="end" color="primary" name="trash-outline" (click)="deleteHistory()" style="margin-right:15px;"></ion-icon>
+  </ion-toolbar>
+  <ion-list *ngIf="isShowHistory">
+    <ion-item *ngFor="let item of historyMaterList" [routerLink]="[backUrl]" [queryParams]="{materCode: item.materialInfo.materCode, materName: item.materialInfo.materName}" detail="false">
+      <ion-label>{{item.materialInfo.materName}}</ion-label>
+      <ion-label>{{item.materialInfo.materCode}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="! isShowHistory">
+    <ion-item *ngFor="let item of materList" (click)="doSelectMater(item.materialInfo.materName, item.materialInfo.materCode)" [routerLink]="['/tabs/func/spc']" [queryParams]="{materCode: item.materialInfo.materCode, materName: item.materialInfo.materName}" detail="false">
+      <ion-label>{{item.materialInfo.materName}}</ion-label>
+      <ion-label>{{item.materialInfo.materCode}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- 上拉分页 -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doUpRefresh($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

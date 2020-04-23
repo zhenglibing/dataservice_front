@@ -1,0 +1,9 @@
+section {
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+    margin-left: 2em;
+    margin-right:2em;
+}
+section:not(.full-width),.full-width > header {
+    padding: 0 10px;
+}

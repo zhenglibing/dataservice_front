@@ -1,0 +1,10 @@
+.primary-theme {
+    ion-button {
+        --background: #3880ff;
+    }
+}
+/*进度条样式*/
+.progress_color {
+    background-color: #387ef5;
+    box-shadow: inset 0px 4px 40px rgba(255,255,255,0.2), 0 10px 10px -5px #387ef5, 0 7px 0 #dddddd;
+  }

@@ -1,0 +1,70 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_fastExam_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        ({{queryParam.itemName}}){{ 'fastExamChart_meanControlChart' | translate }}(%)
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="optionsAvg" class="echarts" style="height:240px;"></div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        ({{queryParam.itemName}}){{ 'fastExamChart_rangeControlChart' | translate }}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div echarts [options]="optionsRange" class="echarts" style="height:240px;"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>{{ 'generic_startTime' | translate }}</ion-label>
+          <ion-label>{{queryParam.startDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_endTime' | translate }}</ion-label>
+          <ion-label>{{queryParam.endDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_materName' | translate}}</ion-label>
+          <ion-label>{{queryParam.materName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'fastExamSearch_checkItem' | translate }}</ion-label>
+          <ion-label>{{queryParam.itemName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_equip' | translate }}</ion-label>
+          <ion-label>{{queryParam.equipName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_shift' | translate }}</ion-label>
+          <ion-label>{{queryParam.shiftClassName}}</ion-label>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label>{{ 'fastExamChart_perMax' | translate }}</ion-label>
+          <ion-label>{{queryParam.perMax}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'fastExamChart_perMin' | translate }}</ion-label>
+          <ion-label>{{queryParam.perMin}}</ion-label>
+        </ion-item> -->
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

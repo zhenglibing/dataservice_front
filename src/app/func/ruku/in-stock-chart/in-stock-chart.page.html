@@ -1,0 +1,75 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_inStock_title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_startTime' | translate }}</ion-label>
+          <ion-label>{{startDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_endTime' | translate }}</ion-label>
+          <ion-label>{{endDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="book" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_materName' | translate }}</ion-label>
+          <ion-label>{{materName}}</ion-label>
+        </ion-item>
+        <ion-item>         
+          <ion-icon name="barcode" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_inStock_weight' | translate }}:</ion-label>
+          <ion-label>{{weight}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="cube" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_convertStdNum' | translate }}:</ion-label>
+          <ion-label>{{convertStdNum}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div echarts [options]="options" class="echarts" style="height:320px;"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let result of resultList">
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+          <ion-label>{{ 'generic_date' | translate }}:</ion-label>
+          <ion-label>{{result[0]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_outboundStorehouse' | translate }}:</ion-label>
+          <ion-label>{{result[1]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_inboundStorehouse' | translate }}:</ion-label>
+          <ion-label>{{result[2]}}</ion-label>
+        </ion-item>
+        <ion-item>        
+          <ion-icon name="car-outline" slot="start" color="primary"></ion-icon>
+          <ion-label>{{ 'generic_serial' | translate }}:</ion-label>
+          <ion-label>{{result[3]}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

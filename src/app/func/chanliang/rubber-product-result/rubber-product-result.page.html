@@ -1,0 +1,45 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_production_title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doDownRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let result of resultList; let k = index">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="barcode" slot="start" color="primary"></ion-icon>
+          <ion-label>物料编码：{{result[0]}}</ion-label>
+        </ion-item>
+        <ion-item (click)="goChartPage(k)" button detail="false">
+          <ion-icon name="cube" slot="start" color="primary"></ion-icon>
+          <ion-label style="color:blue">物料名称：{{result[1]}}</ion-label>
+          <ion-icon name="pulse" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item *ngFor="let equip of equipList; let i = index" >
+          <ion-icon name="aperture" slot="start" color="primary"></ion-icon>
+          <ion-label>{{equip}}：{{result[i + 2]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="gift" slot="start" color="primary"></ion-icon>
+          <ion-label>产量总计：<span style="color:red">{{result[result.length - 1]}}</span></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <!-- 上拉分页 -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doUpRefresh($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

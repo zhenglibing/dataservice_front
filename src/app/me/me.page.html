@@ -1,0 +1,42 @@
+<ion-header *ngIf="isShowHeader">
+    <ion-toolbar>
+        <ion-title>{{ 'meMain_title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content forceOverscroll="false">
+    <ion-list lines="none" >
+        <ion-list-header>
+            <div class="about-us-header">
+                <img src="{{ isDingAvatar? dingUser.avatar : '/assets/img/meImg/aboutUsIco.svg'}}" width="186" height="186" />
+            </div>
+        </ion-list-header>
+        <ion-item>
+            <ion-label>{{ 'meMain_description' | translate }}</ion-label>
+        </ion-item>
+        <!-- 个人设置 -->
+        <ion-item detail button (click)="goPersonPage()">
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-label>{{ 'meMain_person' | translate}}</ion-label>
+        </ion-item>
+        <!-- 订阅设置 -->
+        <ion-item detail>
+            <ion-icon slot="start" name="hammer-outline"></ion-icon>
+            <ion-label>{{ 'meMain_remind' | translate }}</ion-label>
+        </ion-item>
+        <!-- 通用设置 -->
+        <ion-item detail [routerLink]="['/tabs/me/commonset']" >
+            <ion-icon slot="start" name="cog-outline"></ion-icon>
+            <ion-label>{{ 'meMain_common' | translate }}</ion-label>
+        </ion-item>
+        <!-- 问题反馈 -->
+        <ion-item detail [routerLink]="['/tabs/me/feedback']" >
+            <ion-icon slot="start" name="archive-outline"></ion-icon>
+            <ion-label>{{ 'meMain_feedback' | translate }}</ion-label>
+        </ion-item>
+        <!-- 关于我们 -->
+        <ion-item detail [routerLink]="['/tabs/me/about']" >
+            <ion-icon slot="start" name="help-outline"></ion-icon>
+            <ion-label>{{ 'meMain_About' | translate }}</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

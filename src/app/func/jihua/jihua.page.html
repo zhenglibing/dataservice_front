@@ -1,0 +1,33 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_planExecMonitor_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+      <ion-label>{{ 'generic_planDate' | translate }}</ion-label>
+      <ion-datetime [(ngModel)]="input.planDate" display-format="YYYY/MM/DD" picker-format="YYYY/MM/DD" doneText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/classgroup-primary.svg"></ion-icon>
+      <ion-label>{{ 'planExecMonitorSearch_productionArea' | translate}}</ion-label>
+      <ion-select [(ngModel)]="input.equipGroupId" (ionChange)="handleEquipGroupChange($event)" multiple="false" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}" placeholder="{{'planExecMonitorSearch_placeholder_productionArea' | translate}}">
+        <ion-select-option *ngFor="let equipGroup of input.equipGroupList" value="{{equipGroup.codeValue}}">{{equipGroup.codeName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/monitor-primary.svg"></ion-icon>
+      <ion-label>{{ 'generic_equip' | translate }}</ion-label>
+      <ion-select [(ngModel)]="input.equipMultiple" multiple="true" okText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}" placeholder="{{'generic_placeholder_equip' | translate}}">
+        <ion-select-option *ngFor="let equip of input.equipList" value="{{equip.equipCode}}">{{equip.equipName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)='doSearch()'>{{ 'generic_query' | translate }}</ion-button>
+</ion-content>

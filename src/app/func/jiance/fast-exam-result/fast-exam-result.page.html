@@ -1,0 +1,62 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_fastExam_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- 下拉刷新 -->
+  <ion-refresher slot="fixed" (ionRefresh)="doDownRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>{{titleDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{titleDetail}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="noSearchData">
+    <ion-card-content>
+      {{ 'generic_searchNoData' | translate }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let item of resultList; let k = index">
+    <ion-card-content>
+      <ion-list>
+        <ion-item button (click)="goChartPage(k)">
+          <ion-label>{{ 'generic_title_materName' | translate }}</ion-label>
+          <ion-label>{{item.materName}}</ion-label>
+          <ion-icon name="pulse" slot="end" color="primary"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_fastExamResult_output' | translate }} (KG)</ion-label>
+          <ion-label>{{item.realWeight}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_fastExamResult_quaNum' | translate }}</ion-label>
+          <ion-label>{{item.qualityNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_fastExamResult_unQuaRate' | translate }}(%)</ion-label>
+          <ion-label>{{item.unqualityNum}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{ 'generic_fastExamResult_quaRate' | translate }}(%)</ion-label>
+          <ion-label>{{item.qualityRate}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

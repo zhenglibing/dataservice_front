@@ -1,0 +1,25 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meComSet_translate' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group value="{{currLang}}">
+      <!-- 中文 -->
+      <ion-item>
+        <ion-label>{{ 'generic_zh_language' | translate }}</ion-label>
+        <ion-radio value="zh" (click)="changeLanguage('zh')"></ion-radio>
+      </ion-item>
+      <!-- 英文 -->
+      <ion-item>
+          <ion-label>{{ 'generic_en_language' | translate }}</ion-label>
+          <ion-radio value="en" (click)="changeLanguage('en')"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

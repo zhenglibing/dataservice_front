@@ -1,0 +1,26 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_totalQuaRate_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- 开始时间 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+      <ion-label>{{'generic_startTime' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="input.startDate" display-format="YYYY-MM-DD" picker-format="YYYY-MM-DD" doneText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}"></ion-datetime>
+    </ion-item>
+    <!-- 结束时间 -->
+    <ion-item>
+      <ion-icon slot="start" src="/assets/svg/calendar-primary.svg"></ion-icon>
+      <ion-label>{{'generic_endTime' | translate}}</ion-label>
+      <ion-datetime [(ngModel)]="input.endDate" display-format="YYYY-MM-DD" picker-format="YYYY-MM-DD" doneText="{{'generic_confirm' | translate}}" cancelText="{{'generic_cancel' | translate}}"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="doSearch()">{{ 'generic_query' | translate }}</ion-button>
+</ion-content>

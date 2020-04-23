@@ -1,0 +1,74 @@
+<ion-header *ngIf="isShowHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'generic_goback' | translate }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'generic_classifyQuaRate_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>{{titleDate}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{titleDetail}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngFor="let item of result.details">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>{{'generic_materName' | translate}}</ion-label>
+          <ion-label>{{item[0]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'generic_materCode' | translate}}</ion-label>
+          <ion-label>{{item[1]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'rubberItemQualityRate_workshop' | translate}}</ion-label>
+          <ion-label>{{item[2]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[0]}}</ion-label>
+          <ion-label>{{item[4]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[1]}}</ion-label>
+          <ion-label>{{item[5]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[2]}}</ion-label>
+          <ion-label>{{item[6]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[3]}}</ion-label>
+          <ion-label>{{item[7]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[4]}}</ion-label>
+          <ion-label>{{item[8]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[5]}}</ion-label>
+          <ion-label>{{item[9]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[6]}}</ion-label>
+          <ion-label>{{item[10]}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{result.titles[7]}}</ion-label>
+          <ion-label>{{item[11]}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
